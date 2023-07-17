@@ -19,7 +19,7 @@ public class Transferencia {
 
     @Column(name = "data_transferencia")
     @NotNull
-    private OffsetDateTime dataTranferencia;
+    private OffsetDateTime dataTransferencia;
 
     @NotNull
     @Column(name = "valor", columnDefinition = "NUMERIC(20,2)")
@@ -33,9 +33,9 @@ public class Transferencia {
     @Size(max = 50)
     private String nomeOperadorTransacao;
 
-    @ManyToOne
-    @JsonIgnoreProperties("transferencia")
-    private Conta contaId;
+    @NotNull
+    @Column(name = "conta_id")
+    private Integer contaId ;
 
     public Transferencia() {
     }
@@ -48,12 +48,12 @@ public class Transferencia {
         this.id = id;
     }
 
-    public OffsetDateTime getDataTranferencia() {
-        return dataTranferencia;
+    public OffsetDateTime getDataTransferencia() {
+        return dataTransferencia;
     }
 
-    public void setDataTranferencia(OffsetDateTime dataTranferencia) {
-        this.dataTranferencia = dataTranferencia;
+    public void setDataTransferencia(OffsetDateTime dataTransferencia) {
+        this.dataTransferencia = dataTransferencia;
     }
 
     public BigDecimal getValor() {
@@ -80,11 +80,11 @@ public class Transferencia {
         this.nomeOperadorTransacao = nomeOperadorTransacao;
     }
 
-    public Conta getContaId() {
+    public Integer getContaId() {
         return contaId;
     }
 
-    public void setContaId(Conta contaId) {
+    public void setContaId(Integer contaId) {
         this.contaId = contaId;
     }
 }
